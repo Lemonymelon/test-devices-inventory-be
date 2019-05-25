@@ -1,0 +1,39 @@
+{
+  "name": "test-devices-inventory",
+ "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "psql -f ./db/setup_test.sql && mocha spec",
+    "seed:make": "knex seed:make",
+    "seed:run": "psql -f ./db/setup.sql && npm run migrate:latest && knex seed:run",
+    "migrate:make": "knex migrate:make",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:update": "npm run migrate:rollback && npm run migrate:latest",
+    "dev": "nodemon ./listen.js",
+    "seed:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex seed:run",
+    "migrate:latest:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:latest",
+    "migrate:rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback",
+    "heroku:reset": "npm run migrate:rollback:prod && npm run migrate:latest:prod && npm run seed:prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.0",
+    "graphql": "^14.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.5",
+    "pg": "^7.11.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.12.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.10",
+    "supertest": "^3.4.2"
+  }
+}
