@@ -1,13 +1,13 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("departments", departmentsTable => {
     departmentsTable
-      .increments("dept_id")
+      .increments("department_id")
       .primary()
       .unique();
-    departmentsTable.string("dept_name").notNullable();
+    departmentsTable.string("department_name").notNullable();
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.dropTable("departments");
+  return knex.schema.dropTable("departments");
 };

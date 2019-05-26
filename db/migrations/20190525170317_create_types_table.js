@@ -9,5 +9,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.dropTable("device_types");
+  return knex.schema.dropTable("device_types");
 };

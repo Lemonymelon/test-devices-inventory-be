@@ -11,5 +11,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.dropTable("operating_systems");
+  return knex.schema.dropTable("operating_systems");
 };

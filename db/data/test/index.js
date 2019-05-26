@@ -43,7 +43,8 @@ module.exports = {
   operatingSystems: [
     { name: "Bionic Beaver", family: "Ubuntu", build: "18.04.2" },
     { name: "iOS", family: "Apple", build: "12.3" },
-    { name: "Pie", family: "Android", build: "9.0" }
+    { name: "Pie", family: "Android", build: "9.0" },
+    { name: "Windows XP", family: "Microsoft", build: "5.1.2600" }
   ],
   departments: [
     { name: "Tech" },

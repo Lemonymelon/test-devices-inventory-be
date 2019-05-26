@@ -8,11 +8,11 @@ exports.up = function(knex, Promise) {
     employeesTable.string("employee_surname").notNullable();
     employeesTable
       .integer("employee_department")
-      .references("departments.dept_id")
+      .references("departments.department_id")
       .notNullable();
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.dropTable("employees");
+  return knex.schema.dropTable("employees");
 };
