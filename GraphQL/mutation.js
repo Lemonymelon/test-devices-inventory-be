@@ -1,14 +1,11 @@
-const {
-  GraphQLObjectType,
-} = require('graphql');
-const { /* deconstructedMutationFields */ } = require('./mutationFields');
+const { GraphQLObjectType } = require("graphql");
+const { addDeviceType } = require("./mutationFields");
 
 const Mutation = new GraphQLObjectType({
-  name: 'Mutation',
+  name: "Mutation",
   fields: {
-/* deconstructedMutationFields */
-  },
+    addDeviceType
+  }
 });
 
 module.exports = Mutation;
-

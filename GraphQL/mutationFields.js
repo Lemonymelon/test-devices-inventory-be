@@ -5,37 +5,38 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLList,
-  GraphQLID,
-} = require('graphql');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { APP_SECRET } = require('../app_secret_config.js');
-const connection = require('../db/connection');
+  GraphQLID
+} = require("graphql");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const { APP_SECRET } = require("../app_secret_config.js");
+const connection = require("../db/connection");
 const {
-  /* deconstructedTypes */
-} = require('./types');
+  DeviceTypeType,
+  DepartmentType,
+  DeviceType,
+  OperatingSystemType,
+  EmployeeType,
+  BrandType
+} = require("./types");
 
-const /* addMutationField */ = {
-  type: mutationField,
+const addDeviceType = {
+  type: DeviceTypeType,
   args: {
-    user_id: { type: GraphQLID },
-    *_id: { type: GraphQLID },
-    score: { type: GraphQLInt },
+    type_name: { type: GraphQLString }
   },
   resolve(_, args) {
-    const /* newMutationField */ = {
-      user_id: args.user_id,
-      style_id: args.style_id,
-      score: args.score,
+    const newDeviceType = {
+      type_name: args.type_name
     };
     return connection
-      .insert(/* newMutationField */)
-      .into('/* table */')
-      .returning('*')
+      .insert(newDeviceType)
+      .into("device_types")
+      .returning("*")
       .then(([result]) => result);
-  },
+  }
 };
 
+module.exports = {
+  addDeviceType
 };
-
-module.exports = { /* mutations */ };

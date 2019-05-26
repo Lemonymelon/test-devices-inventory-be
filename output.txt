@@ -1,0 +1,49 @@
+ type_id | type_name  
+---------+------------
+       1 | laptop
+       2 | smartphone
+       3 | tablet
+(3 rows)
+
+ brand_id | brand_name 
+----------+------------
+        1 | Apple
+        2 | Acer
+        3 | Dell
+        4 | Samsung
+(4 rows)
+
+ operating_system_id | operating_system_name | operating_system_producer | operating_system_build 
+---------------------+-----------------------+---------------------------+------------------------
+                   1 | Bionic Beaver         | Ubuntu                    | 18.04.2
+                   2 | iOS                   | Apple                     | 12.3
+                   3 | Pie                   | Android                   | 9.0
+                   4 | Windows XP            | Microsoft                 | 5.1.2600
+(4 rows)
+
+ department_id | department_name 
+---------------+-----------------
+             1 | Tech
+             2 | Legal
+             3 | Human Resources
+             4 | Sales
+(4 rows)
+
+ employee_id | employee_forename | employee_surname | employee_department 
+-------------+-------------------+------------------+---------------------
+           1 | Jim               | Jimson           |                   1
+           2 | Tim               | Timson           |                   2
+           3 | Tom               | Tomson           |                   3
+           4 | Dom               | Domson           |                   4
+           5 | Don               | Donson           |                   1
+           6 | Ron               | Ronson           |                   2
+(6 rows)
+
+ device_id | device_brand | device_operating_system | device_employee | device_estimated_time_of_return | device_in_stock 
+-----------+--------------+-------------------------+-----------------+---------------------------------+-----------------
+         1 |            1 |                       1 |                 |                                 | t
+         2 |            2 |                       2 |                 |                                 | t
+         3 |            3 |                       3 |                 |                                 | t
+         4 |            2 |                       4 |                 |                                 | t
+(4 rows)
+

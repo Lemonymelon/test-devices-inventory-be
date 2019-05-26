@@ -6,20 +6,70 @@ const {
   GraphQLInt,
   GraphQLList,
   GraphQLID,
-} = require('graphql');
+  GraphQLBoolean
+} = require("graphql");
 
-
-const thingType = new GraphQLObjectType({
-  name: 'Beer',
+const DeviceTypeType = new GraphQLObjectType({
+  name: "Type",
   fields: () => ({
-    thing_id: { type: GraphQLID },
-    thing_name: { type: GraphQLString },
-    related_thing_id: { type: GraphQLID },
-    related_thing_name: { type: GraphQLString },
-    other_related_thing_id: { type: GraphQLID },
-    other_related_thing_name: { type: GraphQLString },
+    type_id: { type: GraphQLID },
+    type_name: { type: GraphQLString }
+  })
+});
+
+const BrandType = new GraphQLObjectType({
+  name: "Brand",
+  fields: () => ({
+    brand_id: { type: GraphQLID },
+    brand_name: { type: GraphQLString }
+  })
+});
+
+const OperatingSystemType = new GraphQLObjectType({
+  name: "Operating_System",
+  fields: () => ({
+    operating_system_id: { type: GraphQLID },
+    operating_system_name: { type: GraphQLString },
+    operating_system_producer: { type: GraphQLString },
+    operating_system_build: { type: GraphQLString }
+  })
+});
+
+const DepartmentType = new GraphQLObjectType({
+  name: "Department",
+  fields: () => ({
+    department_id: { type: GraphQLID },
+    department_name: { type: GraphQLString }
+  })
+});
+
+const EmployeeType = new GraphQLObjectType({
+  name: "Employee",
+  fields: () => ({
+    employee_id: { type: GraphQLID },
+    employee_forename: { type: GraphQLString },
+    employee_surname: { type: GraphQLString },
+    employee_department: { type: GraphQLInt }
+  })
+});
+
+const DeviceType = new GraphQLObjectType({
+  name: "Device",
+  fields: () => ({
+    device_id: { type: GraphQLID },
+    device_brand: { type: GraphQLInt },
+    device_operating_system: { type: GraphQLInt },
+    device_type: { type: GraphQLInt },
+    device_in_stock: { type: GraphQLBoolean },
+    device_estimated_time_of_return: { type: GraphQLString }
+  })
 });
 
 module.exports = {
-  /* types */
+  DeviceTypeType,
+  BrandType,
+  OperatingSystemType,
+  EmployeeType,
+  DepartmentType,
+  DeviceType
 };

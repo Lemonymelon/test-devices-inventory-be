@@ -6,7 +6,7 @@
   "scripts": {
     "test": "psql -f ./db/setup_test.sql && mocha spec",
     "seed:make": "knex seed:make",
-    "seed:run": "psql -f ./db/setup.sql && npm run migrate:latest && knex seed:run",
+    "seed:run": "psql -f ./db/setup.sql && npm run migrate:update && knex seed:run",
     "migrate:make": "knex migrate:make",
     "migrate:latest": "knex migrate:latest",
     "migrate:rollback": "knex migrate:rollback",
@@ -15,7 +15,8 @@
     "seed:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex seed:run",
     "migrate:latest:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:latest",
     "migrate:rollback:prod": "NODE_ENV=production DB_URL=$(heroku config:get DATABASE_URL) knex migrate:rollback",
-    "heroku:reset": "npm run migrate:rollback:prod && npm run migrate:latest:prod && npm run seed:prod"
+    "heroku:reset": "npm run migrate:rollback:prod && npm run migrate:latest:prod && npm run seed:prod",
+    "checkdb": "psql -f ./checkdb.sql > output.txt"
   },
   "keywords": [],
   "author": "",

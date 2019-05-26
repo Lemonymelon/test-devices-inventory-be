@@ -29,6 +29,7 @@ exports.formatEmployeesData = employeesData => {
 exports.formatDevicesData = devicesData => {
   return devicesData.map(
     ({ deviceType, brand, OS, inStock, employee, ETR }) => ({
+      device_type: deviceType,
       device_brand: brand,
       device_operating_system: OS,
       device_in_stock: inStock,

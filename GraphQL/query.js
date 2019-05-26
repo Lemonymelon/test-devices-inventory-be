@@ -1,16 +1,23 @@
+const { GraphQLObjectType } = require("graphql");
 const {
-  GraphQLObjectType,
-} = require('graphql');
-const {
-  /* deconstructedQueryFields */
-} = require('./queryFields');
+  deviceType,
+  employee,
+  department,
+  device,
+  operatingSystem,
+  brand
+} = require("./queryFields");
 
 const query = new GraphQLObjectType({
-  name: 'RootQueryType',
+  name: "RootQueryType",
   fields: {
-/* queryFields */
-  },
+    deviceType,
+    employee,
+    department,
+    device,
+    operatingSystem,
+    brand
+  }
 });
 
 module.exports = query;
-

@@ -27,9 +27,30 @@ const formattedDevices = formatDevicesData(devices);
 exports.seed = function(knex, Promise) {
   return knex("device_types")
     .insert(formattedDeviceTypes)
-    .then(() => knex("brands").insert(formattedBrands))
-    .then(() => knex("operating_systems").insert(formattedOperatingSystems))
-    .then(() => knex("departments").insert(formattedDepartments))
-    .then(() => knex("employees").insert(formattedEmployees))
-    .then(() => knex("devices").insert(formattedDevices));
+    .returning("*")
+    .then(types => {
+      return knex("brands")
+        .insert(formattedBrands)
+        .returning("*");
+    })
+    .then(brandRows => {
+      return knex("operating_systems")
+        .insert(formattedOperatingSystems)
+        .returning("*");
+    })
+    .then(OSrows => {
+      return knex("departments")
+        .insert(formattedDepartments)
+        .returning("*");
+    })
+    .then(() =>
+      knex("employees")
+        .insert(formattedEmployees)
+        .returning("*")
+    )
+    .then(() =>
+      knex("devices")
+        .insert(formattedDevices)
+        .returning("*")
+    );
 };
