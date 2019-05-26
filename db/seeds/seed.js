@@ -5,8 +5,15 @@ const {
   operatingSystems,
   departments,
   employees,
-  manufacturers
+  brands
 } = require("../data/test");
+
 exports.seed = function(knex, Promise) {
-  return knex("table_name").insert();
+  return knex("device_types")
+    .insert(deviceTypes)
+    .then(() => knex("brands").insert(brands))
+    .then(() => knex("operating_systems").insert(operatingSystems));
+    .then(() => knex("departments").insert(departments));
+    .then(() => knex("employees").insert(employees));
+    .then(() => knex("devices").insert(devices));
 };

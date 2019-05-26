@@ -2,7 +2,7 @@ module.exports = {
   devices: [
     {
       deviceType: 1,
-      manufacturer: 1,
+      brand: 1,
       OS: 1,
       inStock: true,
       employee: null,
@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       deviceType: 2,
-      manufacturer: 2,
+      brand: 2,
       OS: 2,
       inStock: true,
       employee: null,
@@ -18,7 +18,7 @@ module.exports = {
     },
     {
       deviceType: 3,
-      manufacturer: 3,
+      brand: 3,
       OS: 3,
       inStock: true,
       employee: null,
@@ -26,7 +26,7 @@ module.exports = {
     },
     {
       deviceType: 1,
-      manufacturer: 2,
+      brand: 2,
       OS: 4,
       inStock: true,
       employee: null,
@@ -34,7 +34,7 @@ module.exports = {
     }
   ],
   deviceTypes: [{ name: "laptop" }, { name: "smartphone" }, { name: "tablet" }],
-  manufacturers: [
+  brands: [
     { name: "Apple" },
     { name: "Acer" },
     { name: "Dell" },
