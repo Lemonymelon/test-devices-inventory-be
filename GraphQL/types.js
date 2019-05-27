@@ -13,7 +13,8 @@ const DeviceTypeType = new GraphQLObjectType({
   name: "Type",
   fields: () => ({
     type_id: { type: GraphQLID },
-    type_name: { type: GraphQLString }
+    type_name: { type: GraphQLString },
+    type_image_url: { type: GraphQLString }
   })
 });
 

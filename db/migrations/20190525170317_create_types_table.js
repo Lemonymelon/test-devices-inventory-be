@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
       .primary()
       .unique();
     typesTable.string("type_name").notNullable();
+    typesTable.string("type_image_url");
   });
 };
 

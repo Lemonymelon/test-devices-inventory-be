@@ -24,11 +24,14 @@ const {
 const addDeviceType = {
   type: DeviceTypeType,
   args: {
-    type_name: { type: GraphQLString }
+    type_name: { type: GraphQLString },
+    type_image_url: { type: GraphQLString }
   },
   resolve(_, args) {
+    const { type_image_url, type_name } = args;
     const newDeviceType = {
-      type_name: args.type_name
+      type_name,
+      type_image_url
     };
     return connection
       .insert(newDeviceType)
