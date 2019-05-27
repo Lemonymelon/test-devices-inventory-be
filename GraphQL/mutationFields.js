@@ -143,11 +143,31 @@ const addDevice = {
   }
 };
 
+const updateDeviceEmployee = {
+  type: DeviceType,
+  args: {
+    device_id: { type: GraphQLInt },
+    employee_id: { type: GraphQLInt }
+  },
+  resolve(_, args) {
+    const { device_id, employee_id } = args;
+    const updatedDevice = {
+      device_employee: employee_id
+    };
+    return connection("devices")
+      .where({ device_id })
+      .update(updatedDevice)
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
 module.exports = {
   addDeviceType,
   addBrand,
   addOperatingSystem,
   addDepartment,
   addEmployee,
-  addDevice
+  addDevice,
+  updateDeviceEmployee
 };

@@ -5,7 +5,8 @@ const {
   addOperatingSystem,
   addDepartment,
   addEmployee,
-  addDevice
+  addDevice,
+  updateDeviceEmployee
 } = require("./mutationFields");
 
 const Mutation = new GraphQLObjectType({
@@ -16,7 +17,8 @@ const Mutation = new GraphQLObjectType({
     addOperatingSystem,
     addDepartment,
     addEmployee,
-    addDevice
+    addDevice,
+    updateDeviceEmployee
   }
 });
 
