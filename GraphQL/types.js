@@ -60,6 +60,7 @@ const DeviceType = new GraphQLObjectType({
     device_brand: { type: GraphQLInt },
     device_operating_system: { type: GraphQLInt },
     device_type: { type: GraphQLInt },
+    device_employee: { type: GraphQLInt },
     device_in_stock: { type: GraphQLBoolean },
     device_estimated_time_of_return: { type: GraphQLString }
   })

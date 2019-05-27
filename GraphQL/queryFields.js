@@ -107,7 +107,7 @@ const employee = {
       .from("employees")
       .innerJoin(
         "departments",
-        "employees.department",
+        "employees.employee_department",
         "departments.department_id"
       )
       .where(builder => {
@@ -129,18 +129,39 @@ const device = {
     return connection
       .select("*")
       .from("devices")
-      .innerJoin("brands", "devices.brand", "brands.brand_id")
-      .innerJoin("device_types", "devices.device_type", "device_types.type_id")
+      .innerJoin("brands", "devices.device_brand", "=", "brands.brand_id")
+      .innerJoin(
+        "device_types",
+        "devices.device_type",
+        "=",
+        "device_types.type_id"
+      )
       .innerJoin(
         "operating_systems",
-        "devices.operating_system",
+        "devices.device_operating_system",
+        "=",
         "operating_systems.operating_system_id"
       )
-      .innerJoin("employees", "devices.employee", "employees.employee_id")
+      .leftJoin(
+        "employees",
+        "devices.device_employee",
+        "=",
+        "employees.employee_id"
+      )
       .where(builder => {
+        console.log(device_id);
         if (device_id) return builder.where({ device_id });
       })
       .catch(err => {
+        console.log(err);
+        throw new Error("could not find device");
+      });
+
+    return connection
+      .select("*")
+      .from("devices")
+      .catch(err => {
+        console.log(err);
         throw new Error("could not find device");
       });
   }

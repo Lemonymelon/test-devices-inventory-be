@@ -39,11 +39,11 @@
            6 | Ron               | Ronson           |                   2
 (6 rows)
 
- device_id | device_brand | device_operating_system | device_employee | device_estimated_time_of_return | device_in_stock 
------------+--------------+-------------------------+-----------------+---------------------------------+-----------------
-         1 |            1 |                       1 |                 |                                 | t
-         2 |            2 |                       2 |                 |                                 | t
-         3 |            3 |                       3 |                 |                                 | t
-         4 |            2 |                       4 |                 |                                 | t
+ device_id | device_brand | device_operating_system | device_type | device_employee | device_estimated_time_of_return | device_in_stock 
+-----------+--------------+-------------------------+-------------+-----------------+---------------------------------+-----------------
+         1 |            1 |                       1 |           1 |                 |                                 | t
+         2 |            2 |                       2 |           2 |                 |                                 | t
+         3 |            3 |                       3 |           3 |                 |                                 | t
+         4 |            2 |                       4 |           1 |                 |                                 | t
 (4 rows)
 
