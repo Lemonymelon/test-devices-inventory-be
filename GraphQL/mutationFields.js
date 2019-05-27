@@ -162,6 +162,25 @@ const updateDeviceEmployee = {
   }
 };
 
+const updateDeviceInStock = {
+  type: DeviceType,
+  args: {
+    device_id: { type: GraphQLInt },
+    device_in_stock: { type: GraphQLBoolean }
+  },
+  resolve(_, args) {
+    const { device_id, device_in_stock } = args;
+    const updatedDevice = {
+      device_in_stock
+    };
+    return connection("devices")
+      .where({ device_id })
+      .update(updatedDevice)
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
 module.exports = {
   addDeviceType,
   addBrand,
@@ -169,5 +188,6 @@ module.exports = {
   addDepartment,
   addEmployee,
   addDevice,
-  updateDeviceEmployee
+  updateDeviceEmployee,
+  updateDeviceInStock
 };
