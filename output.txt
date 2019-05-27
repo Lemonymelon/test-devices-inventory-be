@@ -3,7 +3,26 @@
        1 | laptop
        2 | smartphone
        3 | tablet
-(3 rows)
+       4 | lemon
+       5 | lemon
+       6 | lemon
+       7 | lemon
+       8 | lemon
+       9 | lemon
+      10 | lemon
+      11 | lemon
+      12 | lemon
+      13 | lemon
+      14 | lemon
+      15 | lemon
+      16 | lemon
+      17 | lemon
+      18 | lemon
+      19 | lemon
+      20 | lemon
+      21 | lemon
+      22 | lemon
+(22 rows)
 
  brand_id | brand_name 
 ----------+------------

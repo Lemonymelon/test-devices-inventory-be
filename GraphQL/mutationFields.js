@@ -5,7 +5,8 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLList,
-  GraphQLID
+  GraphQLID,
+  GraphQLBoolean
 } = require("graphql");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -37,6 +38,116 @@ const addDeviceType = {
   }
 };
 
+const addBrand = {
+  type: BrandType,
+  args: {
+    brand_name: { type: GraphQLString }
+  },
+  resolve(_, args) {
+    const newBrand = {
+      brand_name: args.brand_name
+    };
+    return connection
+      .insert(newBrand)
+      .into("brands")
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
+const addOperatingSystem = {
+  type: OperatingSystemType,
+  args: {
+    operating_system_name: { type: GraphQLString },
+    operating_system_producer: { type: GraphQLString },
+    operating_system_build: { type: GraphQLString }
+  },
+  resolve(_, args) {
+    const {
+      operating_system_build,
+      operating_system_name,
+      operating_system_producer
+    } = args;
+    const newOperatingSystem = {
+      operating_system_name,
+      operating_system_build,
+      operating_system_producer
+    };
+    return connection
+      .insert(newOperatingSystem)
+      .into("operating_systems")
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
+const addDepartment = {
+  type: DepartmentType,
+  args: {
+    department_name: { type: GraphQLString }
+  },
+  resolve(_, args) {
+    const newDepartment = {
+      department_name: args.department_name
+    };
+    return connection
+      .insert(newDepartment)
+      .into("departments")
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
+const addEmployee = {
+  type: EmployeeType,
+  args: {
+    employee_forename: { type: GraphQLString },
+    employee_surname: { type: GraphQLString },
+    employee_department: { type: GraphQLInt }
+  },
+  resolve(_, args) {
+    const { employee_department, employee_forename, employee_surname } = args;
+    const newEmployee = {
+      employee_department,
+      employee_forename,
+      employee_surname
+    };
+    return connection
+      .insert(newEmployee)
+      .into("employees")
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
+const addDevice = {
+  type: DeviceType,
+  args: {
+    device_type: { type: GraphQLInt },
+    device_brand: { type: GraphQLInt },
+    device_operating_system: { type: GraphQLInt }
+  },
+  resolve(_, args) {
+    const { device_type, device_brand, device_operating_system } = args;
+    const newEmployee = {
+      device_type,
+      device_brand,
+      device_operating_system,
+      device_in_stock: true
+    };
+    return connection
+      .insert(newEmployee)
+      .into("devices")
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
 module.exports = {
-  addDeviceType
+  addDeviceType,
+  addBrand,
+  addOperatingSystem,
+  addDepartment,
+  addEmployee,
+  addDevice
 };
