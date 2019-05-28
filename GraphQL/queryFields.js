@@ -20,6 +20,7 @@ const {
   BrandType
 } = require("./types");
 const connection = require("../db/connection");
+const { checkArgumentDataType } = require("../errors");
 
 const deviceType = {
   type: new GraphQLList(DeviceTypeType),
@@ -35,6 +36,7 @@ const deviceType = {
         }
       })
       .catch(err => {
+        if (type_id) checkArgumentDataType(type_id, "integer");
         throw new Error("could not find type");
       });
   }
@@ -54,6 +56,8 @@ const brand = {
         }
       })
       .catch(err => {
+        if (brand_id) checkArgumentDataType(brand_id, "integer");
+
         throw new Error("could not find brand");
       });
   }
@@ -73,6 +77,8 @@ const operatingSystem = {
         }
       })
       .catch(err => {
+        if (operating_system_id)
+          checkArgumentDataType(operating_system_id, "integer");
         throw new Error("could not find OS");
       });
   }
@@ -92,6 +98,7 @@ const department = {
         }
       })
       .catch(err => {
+        if (department_id) checkArgumentDataType(department_id, "integer");
         throw new Error("could not find department");
       });
   }
@@ -149,7 +156,6 @@ const device = {
         "employees.employee_id"
       )
       .where(builder => {
-        console.log(device_id);
         if (device_id) return builder.where({ device_id });
       })
       .catch(err => {
