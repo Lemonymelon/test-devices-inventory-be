@@ -24,8 +24,8 @@ describe("/graphql", () => {
           .get("/graphql")
           .send({ query })
           .then(({ body: { data: { deviceType } } }) => {
-            console.log(deviceType);
             expect(deviceType.length).to.equal(3);
+            expect(deviceType[0].type_id).to.equal("1");
           });
       });
     });
