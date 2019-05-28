@@ -17,7 +17,18 @@ describe("/graphql", () => {
   after(() => connection.destroy());
 
   describe("queries", () => {
-    describe("device_types", () => {});
+    describe("device_types", () => {
+      it.only("returns all device types when no arguments are passed", () => {
+        const query = "{ deviceType { type_id\ntype_name } }";
+        return request
+          .get("/graphql")
+          .send({ query })
+          .then(({ body: { data: { deviceType } } }) => {
+            console.log(deviceType);
+            expect(deviceType.length).to.equal(3);
+          });
+      });
+    });
     describe("brands", () => {});
     describe("operating_systems", () => {});
     describe("departments", () => {});

@@ -17,7 +17,22 @@ app.get(
     })
   })
 );
+
 app.post(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+    formatError: error => ({
+      msg: error.message,
+      locations: error.locations,
+      stack: error.stack ? error.stack.split("\n") : [],
+      path: error.path
+    })
+  })
+);
+
+app.patch(
   "/graphql",
   graphqlHTTP({
     schema,
