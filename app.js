@@ -3,7 +3,7 @@ const graphqlHTTP = require("express-graphql");
 const bodyParser = require("body-parser");
 const schema = require("./GraphQL");
 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.get(
   "/graphql",
   graphqlHTTP({
