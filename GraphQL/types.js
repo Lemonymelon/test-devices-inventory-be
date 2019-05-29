@@ -50,7 +50,7 @@ const EmployeeType = new GraphQLObjectType({
     employee_id: { type: GraphQLID },
     employee_forename: { type: GraphQLString },
     employee_surname: { type: GraphQLString },
-    employee_department: { type: GraphQLInt }
+    employee_department: { type: DepartmentType }
   })
 });
 
@@ -58,10 +58,10 @@ const DeviceType = new GraphQLObjectType({
   name: "Device",
   fields: () => ({
     device_id: { type: GraphQLID },
-    device_brand: { type: GraphQLInt },
-    device_operating_system: { type: GraphQLInt },
-    device_type: { type: GraphQLInt },
-    device_employee: { type: GraphQLInt },
+    device_brand: { type: BrandType },
+    device_operating_system: { type: OperatingSystemType },
+    device_type: { type: DeviceTypeType },
+    device_employee: { type: EmployeeType },
     device_in_stock: { type: GraphQLBoolean },
     device_estimated_time_of_return: { type: GraphQLString }
   })

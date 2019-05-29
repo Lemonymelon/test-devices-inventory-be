@@ -30,14 +30,14 @@ const deviceType = {
     return connection
       .select("*")
       .from("device_types")
+      .innerJoin("devices", "device_types.type_id", "devices.device_type")
       .where(builder => {
         if (type_id) {
           return builder.where({ type_id });
         }
       })
       .catch(err => {
-        console.log(1);
-        gumentDataType(type_id, "integer");
+        checkArgumentDataType(type_id, "integer");
         throw new Error("could not find type");
       });
   }
@@ -137,25 +137,14 @@ const device = {
     return connection
       .select("*")
       .from("devices")
-      .innerJoin("brands", "devices.device_brand", "=", "brands.brand_id")
-      .innerJoin(
-        "device_types",
-        "devices.device_type",
-        "=",
-        "device_types.type_id"
-      )
+      .innerJoin("brands", "devices.device_brand", "brands.brand_id")
+      .join("device_types", "devices.device_type", "device_types.type_id")
       .innerJoin(
         "operating_systems",
         "devices.device_operating_system",
-        "=",
         "operating_systems.operating_system_id"
       )
-      .leftJoin(
-        "employees",
-        "devices.device_employee",
-        "=",
-        "employees.employee_id"
-      )
+      .leftJoin("employees", "devices.device_employee", "employees.employee_id")
       .where(builder => {
         if (device_id) return builder.where({ device_id });
       })
