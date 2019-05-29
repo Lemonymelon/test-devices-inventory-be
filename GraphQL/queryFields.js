@@ -37,8 +37,7 @@ const deviceType = {
       })
       .catch(err => {
         console.log(1);
-
-        if (type_id) checkArgumentDataType(type_id, "integer");
+        gumentDataType(type_id, "integer");
         throw new Error("could not find type");
       });
   }
