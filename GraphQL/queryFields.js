@@ -26,7 +26,6 @@ const deviceType = {
   type: new GraphQLList(DeviceTypeType),
   args: { type_id: { type: GraphQLID } },
   resolve(_, args) {
-    console.log(1)
     const { type_id } = args;
     return connection
       .select("*")
@@ -37,6 +36,8 @@ const deviceType = {
         }
       })
       .catch(err => {
+        console.log(1);
+
         if (type_id) checkArgumentDataType(type_id, "integer");
         throw new Error("could not find type");
       });
