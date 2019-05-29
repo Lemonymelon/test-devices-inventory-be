@@ -75,3 +75,5 @@ module.exports = {
   DepartmentType,
   DeviceType
 };
+
+// test
