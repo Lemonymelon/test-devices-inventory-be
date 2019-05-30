@@ -30,7 +30,7 @@ const deviceType = {
     return connection
       .select("*")
       .from("device_types")
-      .innerJoin("devices", "device_types.type_id", "devices.device_type")
+      .innerJoin("devices", "device_types.type_id",  "devices.device_type")
       .where(builder => {
         if (type_id) {
           return builder.where({ type_id });
@@ -89,7 +89,7 @@ const department = {
   type: new GraphQLList(DepartmentType),
   args: { department_id: { type: GraphQLID } },
   resolve(_, args) {
-    const { department_id } = args;
+    const { department_id, employee_id } = args;
     return connection
       .select("*")
       .from("departments")

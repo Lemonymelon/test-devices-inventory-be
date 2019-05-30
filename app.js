@@ -2,8 +2,12 @@ const app = require("express")();
 const graphqlHTTP = require("express-graphql");
 const bodyParser = require("body-parser");
 const schema = require("./GraphQL");
+const cors = require("cors");
+
+app.use(cors());
 
 app.use(bodyParser.json());
+
 app.get(
   "/graphql",
   graphqlHTTP({

@@ -45,7 +45,7 @@ const DepartmentType = new GraphQLObjectType({
 });
 
 const EmployeeType = new GraphQLObjectType({
-  name: "Employee",
+  name: "employees",
   fields: () => ({
     employee_id: { type: GraphQLID },
     employee_forename: { type: GraphQLString },
@@ -75,5 +75,3 @@ module.exports = {
   DepartmentType,
   DeviceType
 };
-
-// test

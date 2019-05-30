@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
       .unique();
     operatingSystemsTable.string("operating_system_name").notNullable();
     operatingSystemsTable.string("operating_system_producer").notNullable();
-    operatingSystemsTable.string("operating_system_build").notNullable();
+    operatingSystemsTable.string("operating_system_build");
   });
 };
 
