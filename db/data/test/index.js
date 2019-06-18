@@ -33,7 +33,21 @@ module.exports = {
       ETR: null
     }
   ],
-  deviceTypes: [{ name: "laptop", url: "https://static.thenounproject.com/png/114-200.png" }, { name: "smartphone", url: "https://banner2.kisspng.com/20180418/ihq/kisspng-iphone-computer-icons-smartphone-clip-art-mobile-phone-icon-5ad7b26f3f2192.7774830515240853592586.jpg" }, { name: "tablet", url: "https://cdn1.iconfinder.com/data/icons/general-9/500/iPad-512.png" }],
+  deviceTypes: [
+    {
+      name: "laptop",
+      url: "https://static.thenounproject.com/png/114-200.png"
+    },
+    {
+      name: "smartphone",
+      url:
+        "http://icons.iconarchive.com/icons/iconsmind/outline/256/Smartphone-4-icon.png"
+    },
+    {
+      name: "tablet",
+      url: "https://png.pngtree.com/svg/20170105/36c165e29c.png"
+    }
+  ],
   brands: [
     { name: "Apple" },
     { name: "Acer" },
