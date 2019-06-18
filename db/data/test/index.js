@@ -33,7 +33,7 @@ module.exports = {
       ETR: null
     }
   ],
-  deviceTypes: [{ name: "laptop" }, { name: "smartphone" }, { name: "tablet" }],
+  deviceTypes: [{ name: "laptop", url: "https://static.thenounproject.com/png/114-200.png" }, { name: "smartphone", url: "https://banner2.kisspng.com/20180418/ihq/kisspng-iphone-computer-icons-smartphone-clip-art-mobile-phone-icon-5ad7b26f3f2192.7774830515240853592586.jpg" }, { name: "tablet", url: "https://cdn1.iconfinder.com/data/icons/general-9/500/iPad-512.png" }],
   brands: [
     { name: "Apple" },
     { name: "Acer" },

@@ -1,5 +1,8 @@
 exports.formatTypesData = typesData => {
-  return typesData.map(({ name }) => ({ type_name: name }));
+  return typesData.map(({ name, url }) => ({
+    type_name: name,
+    type_image_url: url
+  }));
 };
 
 exports.formatBrandsData = brandsData => {
