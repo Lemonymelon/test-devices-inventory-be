@@ -31,7 +31,8 @@ module.exports = {
       inStock: true,
       employee: null,
       ETR: null
-    },    {
+    },
+    {
       deviceType: 1,
       brand: 1,
       OS: 1,
@@ -62,7 +63,8 @@ module.exports = {
       inStock: true,
       employee: null,
       ETR: null
-    }    {
+    },
+    {
       deviceType: 1,
       brand: 1,
       OS: 1,
