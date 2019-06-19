@@ -31,6 +31,68 @@ module.exports = {
       inStock: true,
       employee: null,
       ETR: null
+    },    {
+      deviceType: 1,
+      brand: 1,
+      OS: 1,
+      inStock: true,
+      employee: null,
+      ETR: null
+    },
+    {
+      deviceType: 2,
+      brand: 2,
+      OS: 2,
+      inStock: true,
+      employee: null,
+      ETR: null
+    },
+    {
+      deviceType: 3,
+      brand: 3,
+      OS: 3,
+      inStock: true,
+      employee: null,
+      ETR: null
+    },
+    {
+      deviceType: 1,
+      brand: 2,
+      OS: 4,
+      inStock: true,
+      employee: null,
+      ETR: null
+    }    {
+      deviceType: 1,
+      brand: 1,
+      OS: 1,
+      inStock: true,
+      employee: null,
+      ETR: null
+    },
+    {
+      deviceType: 2,
+      brand: 2,
+      OS: 2,
+      inStock: true,
+      employee: null,
+      ETR: null
+    },
+    {
+      deviceType: 3,
+      brand: 3,
+      OS: 3,
+      inStock: true,
+      employee: null,
+      ETR: null
+    },
+    {
+      deviceType: 1,
+      brand: 2,
+      OS: 4,
+      inStock: true,
+      employee: null,
+      ETR: null
     }
   ],
   deviceTypes: [
