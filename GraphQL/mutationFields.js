@@ -184,6 +184,31 @@ const updateDeviceInStock = {
   }
 };
 
+const updateDeviceETR = {
+  type: DeviceType,
+  args: {
+    device_id: { type: GraphQLInt },
+    device_estimated_time_of_return: { type: GraphQLString }
+  },
+  resolve(_, args) {
+    const { device_id, device_estimated_time_of_return } = args;
+    const timeStamp = Date.parse(device_estimated_time_of_return) / 1000;
+    const timeStampString = timeStamp.toString();
+    console.log(timeStampString);
+    console.log(device_estimated_time_of_return);
+
+    const updatedDevice = {
+      device_estimated_time_of_return: timeStampString
+    };
+
+    return connection("devices")
+      .where({ device_id })
+      .update(updatedDevice)
+      .returning("*")
+      .then(([result]) => result);
+  }
+};
+
 module.exports = {
   addDeviceType,
   addBrand,
@@ -192,5 +217,6 @@ module.exports = {
   addEmployee,
   addDevice,
   updateDeviceEmployee,
-  updateDeviceInStock
+  updateDeviceInStock,
+  updateDeviceETR
 };

@@ -57,7 +57,7 @@ describe("/graphql", () => {
           });
       });
     });
-    describe.only("brands", () => {
+    describe("brands", () => {
       it("returns all device brands with access to all brand properties when no arguments are passed", () => {
         const query = "{ brand { brand_id\nbrand_name } }";
         return request
@@ -107,6 +107,48 @@ describe("/graphql", () => {
     describe("operating_systems", () => {});
     describe("departments", () => {});
     describe("employees", () => {});
-    describe("devices", () => {});
+    describe("devices", () => {
+      it("updates a device's assigned employee, checked in status, and estimated time of return", () => {
+        const mutation = `mutation {
+          updateDeviceEmployee(device_id: 1, employee_id: 2) {
+            device_id
+            device_employee
+          }
+          updateDeviceInStock(device_id: 1, device_in_stock: false) {
+            device_id
+            device_in_stock
+          }
+        }`;
+        return request
+          .post("/graphql")
+          .send({ query: mutation })
+          .then(({ body: { data } }) => {
+            expect(data).to.eql({
+              updateDeviceEmployee: { device_id: "1", device_employee: 2 },
+              updateDeviceInStock: { device_id: "1", device_in_stock: false }
+            });
+          });
+      });
+
+      it.only("updates a device's estimated time of return when passed a date string", () => {
+        const mutation = `mutation {
+          updateDeviceETR(device_id: 1, device_estimated_time_of_return: "02/13/2009 23:31:30") {
+            device_id
+            device_estimated_time_of_return
+          }
+        }`;
+        return request
+          .post("/graphql")
+          .send({ query: mutation })
+          .then(({ body: { data } }) => {
+            expect(data).to.eql({
+              updateDeviceETR: {
+                device_id: "1",
+                device_estimated_time_of_return: "1234567890"
+              }
+            });
+          });
+      });
+    });
   });
 });

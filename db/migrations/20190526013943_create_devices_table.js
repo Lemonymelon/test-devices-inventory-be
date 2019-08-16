@@ -17,7 +17,7 @@ exports.up = function(knex, Promise) {
       .references("device_types.type_id")
       .notNullable();
     devicesTable.integer("device_employee").references("employees.employee_id");
-    devicesTable.timestamp("device_estimated_time_of_return");
+    devicesTable.integer("device_estimated_time_of_return");
     devicesTable.boolean("device_in_stock").notNullable();
   });
 };
