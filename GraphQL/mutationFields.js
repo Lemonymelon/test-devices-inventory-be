@@ -194,8 +194,8 @@ const updateDeviceETR = {
     const { device_id, device_estimated_time_of_return } = args;
     const timeStamp = Date.parse(device_estimated_time_of_return) / 1000;
     const timeStampString = timeStamp.toString();
-    console.log(timeStampString);
-    console.log(device_estimated_time_of_return);
+    console.log("Made it");
+  
 
     const updatedDevice = {
       device_estimated_time_of_return: timeStampString
