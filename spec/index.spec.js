@@ -130,7 +130,7 @@ describe("/graphql", () => {
           });
       });
 
-      it.only("updates a device's estimated time of return when passed a date string", () => {
+      it("updates a device's estimated time of return when passed a date string", () => {
         const mutation = `mutation {
           updateDeviceETR(device_id: 1, device_estimated_time_of_return: "02/13/2009 23:31:30") {
             device_id
@@ -142,6 +142,36 @@ describe("/graphql", () => {
           .send({ query: mutation })
           .then(({ body: { data } }) => {
             expect(data).to.eql({
+              updateDeviceETR: {
+                device_id: "1",
+                device_estimated_time_of_return: "1234567890"
+              }
+            });
+          });
+      });
+      it.only("updates a device's ETR, in_stock, and employee in one mutation", () => {
+        const mutation = `mutation {
+          updateDeviceEmployee(device_id: 1, employee_id: 2) {
+            device_id
+            device_employee
+          }
+          updateDeviceInStock(device_id: 1, device_in_stock: false) {
+            device_id
+            device_in_stock
+          }
+          updateDeviceETR(device_id: 1, device_estimated_time_of_return: "02/13/2009 23:31:30") {
+            device_id
+            device_estimated_time_of_return
+          }
+        }`;
+        console.log(mutation);
+        return request
+          .post("/graphql")
+          .send({ query: mutation })
+          .then(({ body: { data } }) => {
+            expect(data).to.eql({
+              updateDeviceEmployee: { device_id: "1", device_employee: 2 },
+              updateDeviceInStock: { device_id: "1", device_in_stock: false },
               updateDeviceETR: {
                 device_id: "1",
                 device_estimated_time_of_return: "1234567890"

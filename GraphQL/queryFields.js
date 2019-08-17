@@ -30,7 +30,7 @@ const deviceType = {
     return connection
       .select("*")
       .from("device_types")
-      .innerJoin("devices", "device_types.type_id",  "devices.device_type")
+      .innerJoin("devices", "device_types.type_id", "devices.device_type")
       .where(builder => {
         if (type_id) {
           return builder.where({ type_id });
@@ -133,7 +133,7 @@ const device = {
   type: new GraphQLList(DeviceType),
   args: { device_id: { type: GraphQLID } },
   resolve(_, args) {
-    const { device_id } = args;
+    const { device_id, sortBy, orderBy } = args;
     return connection
       .select("*")
       .from("devices")
@@ -153,13 +153,13 @@ const device = {
         throw new Error("could not find device");
       });
 
-    return connection
-      .select("*")
-      .from("devices")
-      .catch(err => {
-        console.log(err);
-        throw new Error("could not find device");
-      });
+    // return connection
+    //   .select("*")
+    //   .from("devices")
+    //   .catch(err => {
+    //     console.log(err);
+    //     throw new Error("could not find device");
+    //   });
   }
 };
 
