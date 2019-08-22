@@ -20,12 +20,13 @@ describe("/graphql", () => {
 
   describe("queries", () => {
     describe("device_types", () => {
-      it("returns all device types with access to all type properties when no arguments are passed", () => {
+      it.only("returns all device types with access to all type properties when no arguments are passed", () => {
         const query = "{ deviceType { type_id\ntype_name } }";
         return request
           .get("/graphql")
           .send({ query })
           .then(({ body: { data: { deviceType } } }) => {
+            console.log(deviceType);
             expect(deviceType.length).to.equal(3);
             expect(deviceType[0].type_id).to.equal("1");
             expect(Object.keys(deviceType[0])).to.eql(["type_id", "type_name"]);
@@ -149,7 +150,7 @@ describe("/graphql", () => {
             });
           });
       });
-      it.only("updates a device's ETR, in_stock, and employee in one mutation", () => {
+      it("updates a device's ETR, in_stock, and employee in one mutation", () => {
         const mutation = `mutation {
           updateDeviceEmployee(device_id: 1, employee_id: 2) {
             device_id

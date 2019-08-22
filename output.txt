@@ -1,8 +1,0 @@
- device_id | device_brand | device_operating_system | device_type | device_employee | device_estimated_time_of_return | device_in_stock | type_id | type_name  | type_image_url 
------------+--------------+-------------------------+-------------+-----------------+---------------------------------+-----------------+---------+------------+----------------
-         1 |            1 |                       1 |           1 |                 |                                 | t               |       1 | laptop     | 
-         2 |            2 |                       2 |           2 |                 |                                 | t               |       2 | smartphone | 
-         3 |            3 |                       3 |           3 |                 |                                 | t               |       3 | tablet     | 
-         4 |            2 |                       4 |           1 |                 |                                 | t               |       1 | laptop     | 
-(4 rows)
-
